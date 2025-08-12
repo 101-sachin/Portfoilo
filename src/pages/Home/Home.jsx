@@ -1,18 +1,17 @@
 import React, { useEffect } from "react";
-import Loader from "../../components/Loader/Loader";
 import "./Home.css";
 import { FaLinkedin, FaGithub, FaTwitter, FaEnvelope } from "react-icons/fa";
 import { usePortfolio } from "../../context/PortfolioContext";
 
 const Home = () => {
-  const { profile} = usePortfolio();
+  const { profile, LoaderComponent } = usePortfolio();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   if (!profile) {
-    return <Loader />;
+    return <LoaderComponent />;
   }
 
 
@@ -79,7 +78,7 @@ const Home = () => {
           </div>
           <div className="right-content">
             <img
-              src="src/assets/photo.png"
+              src="/assets/photo.png"
               alt="Profile"
               className="profile-image"
             />

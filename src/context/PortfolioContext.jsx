@@ -1,47 +1,59 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import Loader from '../components/Loader/Loader';
 
 const PortfolioContext = createContext();
 
 export const usePortfolio = () => {
   const context = useContext(PortfolioContext);
   if (!context) {
-    throw new Error('useProfile must be used within a PortfolioProvider');
+    throw new Error('usePortfolio must be used within a PortfolioProvider');
   }
   return context;
 };
 
 export const PortfolioProvider = ({ children }) => {
   const [profile, setProfile] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const API_URL = "https://portfoilo-be.onrender.com/";
+  const [skills, setSkills] = useState([]);
+  const API_URL = "https://portfoilo-be.onrender.com";
 
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        setLoading(true);
-        const response = await axios.get(`${API_URL}home`);
+        const response = await axios.get(`${API_URL}/home`);
         setProfile(response.data[0]);
       } catch (error) {
-        console.error("Error fetching profile:", error);
         setProfile({
-          name: "Sachin",
-          title: "Software Developer",
-          intro: "Failed to load profile.",
-          social_media: {}
+          error: "Failed to load profile."
         });
-      } finally {
-        setLoading(false);
       }
     };
 
     fetchProfile();
   }, []);
 
+  useEffect(() => {
+    const fetchSkills = async () => {
+      try {
+        const response = await axios.get(`${API_URL}/skills`);
+        if (response.data && response.data.skills) {
+          setSkills(response.data.skills);
+        } else {
+          setSkills(["failed to load skills"]);
+        }
+      } catch (error) {
+        setSkills(["failed to load skills"]);
+      }
+    };
+
+    fetchSkills();
+  }, []);
+
   const value = {
     profile,
-    loading,
-    socialMedia: profile?.social_media || {}
+    socialMedia: profile?.social_media || {},
+    skills,
+    LoaderComponent: Loader
   };
 
   return (
