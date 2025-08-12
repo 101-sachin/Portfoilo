@@ -27,9 +27,7 @@ const Project = () => {
               src="edu_minds.jpeg"
               alt={project.name} 
               className="project-image"
-              onError={(e) => {
-                e.target.src = "edu_minds.jpeg";
-              }}
+              draggable="false"
             />
             <div className="project-content">
               <h3 className="project-name">{project.name}</h3>

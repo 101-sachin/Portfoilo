@@ -1,33 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Loader from "../../components/Loader/Loader";
 import "./Home.css";
 import { FaLinkedin, FaGithub, FaTwitter, FaEnvelope } from "react-icons/fa";
+import { usePortfolio } from "../../context/PortfolioContext";
 
 const Home = () => {
-  const API_URL = "https://sachin-s-portfolio-eta.vercel.app/home";
-  const [profile, setProfile] = useState(null);
+  const { profile} = usePortfolio();
 
   useEffect(() => {
-    fetch(API_URL)
-      .then((res) => {
-        if (!res.ok) throw new Error("Network response was not ok");
-        return res.json();
-      })
-      .then((data) => setProfile(data[0]))  
-      .catch(() =>
-        setProfile({
-          name: "Sachin",
-          title: "Developer",
-          intro: "Failed to load profile.",
-        })
-      );
-
     window.scrollTo(0, 0);
   }, []);
 
   if (!profile) {
     return <Loader />;
   }
+
 
   return (
     <div>
@@ -39,7 +26,7 @@ const Home = () => {
             <p className="profile-intro">{profile.intro}</p>
             <div className="resume-btn-container">
               <a
-                href="https://drive.google.com/file/d/1wUopo31JTF6rAmEo9WNwCGz1o87gr0G6/view?usp=sharing"
+                href={profile.resume_link}
                 className="resume-btn"
                 target="_blank"
                 rel="noreferrer"

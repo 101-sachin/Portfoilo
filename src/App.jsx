@@ -6,22 +6,25 @@ import Project from "./pages/Project/Project";
 import Skills from "./pages/Skills/Skills";
 import Experience from "./pages/Experience/Experience";
 import Contact from "./pages/Contact/Contact";
+import { PortfolioProvider } from "./context/PortfolioContext";
 
 const App = () => {
   return (
-    <div className="app">
-      <Header />
-      
-      <main className="main-content">
-        <Home />
-        <Project />
-        <Skills />
-        <Experience />
-        <Contact />
-      </main>
+    <PortfolioProvider>
+      <div className="app">
+        <Header />
+        
+        <main className="main-content">
+          <Home />
+          <Project />
+          <Skills />
+          <Experience />
+          <Contact />
+        </main>
 
-      <ScrollToEdgeButton />
-    </div>
+        <ScrollToEdgeButton />
+      </div>
+    </PortfolioProvider>
   );
 };
 
