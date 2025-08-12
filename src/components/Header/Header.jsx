@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./Header.css";
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
+import { usePortfolio } from "../../context/PortfolioContext";
 
 const sections = [
   { id: "home", label: "Home" },
@@ -13,19 +14,8 @@ const sections = [
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
-  const [profile, setProfile] = useState(null);
   const headerRef = useRef(null);
-  const API_URL = "https://sachin-s-portfolio-gilt.vercel.app/home";
-
-  useEffect(() => {
-    fetch(API_URL)
-      .then((res) => {
-        if (!res.ok) throw new Error("Network response was not ok");
-        return res.json();
-      })
-      .then((data) => setProfile(data[0]))
-      .catch((error) => console.error("Error fetching profile:", error));
-  }, []);
+  const { socialMedia } = usePortfolio();
 
   useEffect(() => {
     if (menuOpen) {
@@ -73,7 +63,7 @@ const Header = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
+            setActiveSection(entry.target.id);  
           }
         });
       },
@@ -139,9 +129,9 @@ const Header = () => {
             </li>
           ))}
           <div className="mobile-social-icons">
-            {profile?.social_media?.linkedin && (
+            {socialMedia?.linkedin && (
               <a
-                href={profile.social_media.linkedin}
+                href={socialMedia.linkedin}
                 className="social-icon"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -149,9 +139,9 @@ const Header = () => {
                 <FaLinkedin />
               </a>
             )}
-            {profile?.social_media?.github && (
+            {socialMedia?.github && (
               <a
-                href={profile.social_media.github}
+                href={socialMedia.github}
                 className="social-icon"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -159,9 +149,9 @@ const Header = () => {
                 <FaGithub />
               </a>
             )}
-            {profile?.social_media?.x && (
+            {socialMedia?.x && (
               <a
-                href={profile.social_media.x}
+                href={socialMedia.x}
                 className="social-icon"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -169,9 +159,9 @@ const Header = () => {
                 <FaTwitter />
               </a>
             )}
-            {profile?.social_media?.mail && (
+            {socialMedia?.mail && (
               <a
-                href={`mailto:${profile.social_media.mail}`}
+                href={`mailto:${socialMedia.mail}`}
                 className="social-icon"
                 target="_blank"
                 rel="noopener noreferrer"

@@ -3,7 +3,7 @@ import "./Skills.css";
 
 const Skills = () => {
   const [skills, setSkills] = useState([]);
-  const API_URL = "https://sachin-s-portfolio-eta.vercel.app/skills";
+  const API_URL = "https://portfoilo-be.onrender.com/skills";
 
   useEffect(() => {
     fetch(API_URL)
