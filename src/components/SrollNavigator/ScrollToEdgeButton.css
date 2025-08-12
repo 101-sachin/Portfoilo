@@ -1,0 +1,20 @@
+.scroll-edge-btn {
+    position: fixed;
+    bottom: 60px;
+    right: 40px;
+    z-index: 1;
+    background-color: #222;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 12px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: background-color 0.3s ease;
+  }
+  
+  .scroll-edge-btn:hover {
+    background-color: #555;
+  }
+  

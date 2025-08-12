@@ -1,0 +1,267 @@
+.header-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #1B1B1B;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: all 0.5s ease;
+}
+
+.header-div {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1001;
+}
+
+.logo-div {
+  flex: 1;
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.logo:hover {
+  color: #0984e3;
+}
+
+.hamburger-menu {
+  display: block;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #fff;
+  transition: transform 0.3s ease;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hamburger-menu.open {
+  transform: rotate(90deg);
+}
+
+.hamburger-menu span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: #fff;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.hamburger-menu span::before,
+.hamburger-menu span::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.hamburger-menu span::before {
+  top: -8px;
+}
+
+.hamburger-menu span::after {
+  bottom: -8px;
+}
+
+.hamburger-menu.open span {
+  background-color: transparent;
+}
+
+.hamburger-menu.open span::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.hamburger-menu.open span::after {
+  transform: rotate(-45deg);
+  bottom: 0;
+}
+
+.nav-links {
+  height: calc(100vh - 54px);
+  position: fixed;
+  top: 56px;
+  left: 0;
+  right: 0;
+  background-color: #1B1B1B;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  gap: 1.5rem;
+  transform: translateX(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  margin: 0;
+  z-index: 999;
+  display: flex;
+  overflow-y: auto;
+}
+
+.nav-links.show {
+  transform: translateX(0);
+  opacity: 0.99;
+  visibility: visible;
+}
+
+.nav-link-item {
+  width: 100%;
+  text-align: center;
+  padding: 0.5rem 0;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.nav-link-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #0984e3;
+  transition: width 0.3s;
+}
+
+.nav-link-item:hover::after,
+.nav-link-item.active::after {
+  width: 100%;
+}
+
+.nav-link-item:hover,
+.nav-link-item.active {
+  color: #0984e3;
+}
+
+.mobile-social-icons {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: auto;
+  position: sticky;
+  bottom: 0;
+  background-color: #1B1B1B;
+  width: 100%;
+  justify-content: center;
+}
+
+.mobile-social-icons .social-icon {
+  color: #fff;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.mobile-social-icons .social-icon:hover {
+  color: #0984e3;
+}
+
+@media (min-width: 767px) {
+  .header-div {
+    max-width: 720px;
+    padding: 1rem;
+  }
+
+  .logo {
+    font-size: 1.3rem;
+  }
+
+  .hamburger-menu {
+    display: none;
+  }
+
+  .nav-links {
+    position: static;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    background-color: transparent;
+    padding: 0;
+    gap: 1.5rem;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    box-shadow: none;
+    overflow-y: visible;
+  }
+
+  .nav-link-item {
+    width: auto;
+    padding: 0;
+    font-size: 0.95rem;
+  }
+
+  .nav-link-item::after {
+    bottom: -5px;
+  }
+
+  .mobile-social-icons {
+    display: none;
+  }
+}
+
+@media (min-width: 1023px) {
+  .header-div {
+    max-width: 1280px;
+    padding: 1rem 2rem;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .hamburger-menu {
+    display: none;
+  }
+
+  .nav-links {
+    position: static;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    background-color: transparent;
+    padding: 0;
+    gap: 2rem;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    box-shadow: none;
+    overflow-y: visible;
+  }
+
+  .nav-link-item {
+    width: auto;
+    padding: 0;
+    font-size: 1rem;
+  }
+
+  .nav-link-item::after {
+    bottom: -5px;
+  }
+
+  .mobile-social-icons {
+    display: none;
+  }
+}

@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+.home-container{
+  width: 100%;
+  background-color: #1B1B1B;
+  padding: 1rem 1rem 3rem;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.home-content{
+  width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 2rem;
+  padding-top: 4rem;
+}
+
+.left-content{
+  width: 100%;
+}
+
+.profile-name{
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.profile-title{
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+  padding-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+.profile-intro{
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #fff;
+  word-wrap: break-word;
+  word-spacing: normal;
+  padding-bottom: 0.5rem;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.right-content{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.profile-image{
+  width: 280px;
+  max-height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 20px rgba(9, 132, 227, 0.3);
+}
+
+.resume-btn-container{
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.resume-btn{
+  padding: 12px 32px;
+  background-color: #0000ff;
+  color: #fff;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.resume-btn:hover{
+  background-color: #0000ffbe;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 255, 0.3);
+}
+
+.social-icons{
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+.social-icons .icons{
+  font-size: 1.5rem;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-icons .icons:hover {
+  color: #0984e3;
+  transform: translateY(-3px);
+}
+
+@media (min-width: 767px) {
+  .home-container {
+    padding: 1rem 2rem 3rem;
+  }
+
+  .home-content {
+    max-width: 720px;
+    margin: 0 auto;
+    padding-top: 5rem;
+  }
+
+  .profile-name {
+    font-size: 3.5rem;
+  }
+
+  .profile-title {
+    font-size: 1.8rem;
+  }
+
+  .profile-intro {
+    font-size: 1.3rem;
+  }
+}
+
+@media (min-width: 1023px) {
+  .home-container {
+    padding: 1rem 2rem 3rem;
+  }
+
+  .home-content {
+    max-width: 1280px;
+    margin: 0 auto;
+    align-items: center;
+    padding-top: 6rem;
+    flex-direction: row;
+    gap: 4rem;
+  }
+
+  .left-content {
+    width: 50%;
+    text-align: left;
+  }
+  .right-content{
+    width: 50%;
+  }
+  .profile-name {
+    text-align: left;
+    font-size: 48px;
+  }
+  .profile-title {
+    text-align: left;
+    font-size: 32px;
+  }
+  .profile-intro {
+    text-align: left;
+    font-size: 20px;
+    max-width: 90%;
+  }
+  .resume-btn-container {
+    justify-content: flex-start;
+  }
+  .social-icons {
+    justify-content: flex-start;
+  }
+}
