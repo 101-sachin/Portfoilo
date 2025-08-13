@@ -16,7 +16,7 @@ const Project = () => {
               alt={project.name} 
               className="project-image"
               draggable="false"
-            />
+            />  
             <div className="project-content">
               <h3 className="project-name">{project.name}</h3>
               <p className="project-description">{project.description}</p>

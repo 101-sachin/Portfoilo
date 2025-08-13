@@ -33,6 +33,22 @@ export const PortfolioProvider = ({ children }) => {
     fetchProfile();
   }, []);
 
+
+  useEffect(()=>{
+    const fetchProjects = async ()=>{
+      try{
+        const response = await axios.get(`${API_URL}/projects`)
+        setProjects(response.data)
+      }
+      catch(error){
+        setProjects({
+          error: "Failed to load projects"
+        })
+      }
+    }
+    fetchProjects()
+  },[])
+
   useEffect(() => {
     const fetchSkills = async () => {
       try {
