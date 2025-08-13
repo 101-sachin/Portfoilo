@@ -1,21 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./Project.css";
+import { usePortfolio } from "../../context/PortfolioContext";
 
 const Project = () => {
-  const [projects, setProjects] = useState([]);
-  const API_URL = "https://sachin-s-portfolio-eta.vercel.app/projects";
-
-  useEffect(() => {
-    fetch(API_URL)
-      .then((res) => {
-        if (!res.ok) throw new Error("Network response was not ok");
-        return res.json();
-      })
-      .then((data) => setProjects(data))
-      .catch((error) => {
-        console.error("Error fetching projects:", error);
-      });
-  }, []);
+  const {projects} = usePortfolio()
 
   return (
     <section className="project-section" id="projects">
@@ -28,7 +16,7 @@ const Project = () => {
               alt={project.name} 
               className="project-image"
               draggable="false"
-            />
+            />  
             <div className="project-content">
               <h3 className="project-name">{project.name}</h3>
               <p className="project-description">{project.description}</p>
