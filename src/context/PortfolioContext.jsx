@@ -15,6 +15,7 @@ export const usePortfolio = () => {
 export const PortfolioProvider = ({ children }) => {
   const [profile, setProfile] = useState(null);
   const [skills, setSkills] = useState([]);
+  const [projects, setProjects] = useState([]);
   const API_URL = "https://portfoilo-be.onrender.com";
 
   useEffect(() => {
@@ -36,23 +37,36 @@ export const PortfolioProvider = ({ children }) => {
     const fetchSkills = async () => {
       try {
         const response = await axios.get(`${API_URL}/skills`);
-        if (response.data && response.data.skills) {
-          setSkills(response.data.skills);
-        } else {
-          setSkills(["failed to load skills"]);
-        }
+        setSkills(response.data.skills)
       } catch (error) {
-        setSkills(["failed to load skills"]);
+        setSkills({
+          error: "Failed to load skills"
+        })
       }
     };
 
     fetchSkills();
   }, []);
 
+  useEffect(()=>{
+    const fetchProjects = async ()=>{
+      try {
+        const response = await axios.get(`${API_URL}/projects`)
+        setProjects(response.data)
+      } catch (error) {
+        setProjects({
+          error: "Failed to load projects"
+        })
+      }
+    }
+    fetchProjects()
+  },[])
+
   const value = {
     profile,
     socialMedia: profile?.social_media || {},
     skills,
+    projects,
     LoaderComponent: Loader
   };
 
