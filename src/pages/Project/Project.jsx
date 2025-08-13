@@ -3,7 +3,11 @@ import "./Project.css";
 import { usePortfolio } from "../../context/PortfolioContext";
 
 const Project = () => {
-  const {projects} = usePortfolio()
+  const {projects,LoaderComponent} = usePortfolio()
+
+  if (!projects || projects.length === 0) {
+    return <LoaderComponent />;
+  }
 
   return (
     <section className="project-section" id="projects">
